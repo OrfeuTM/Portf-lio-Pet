@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Ajustes Globais e Variáveis
+   ========================================================================== */
+:root {
+    --cor-primaria: #198754;      /* Verde institucional (Saúde) */
+    --cor-secundaria: #146c43;    /* Verde escuro para efeitos de hover */
+    --cor-clara: #eef7f2;         /* Fundo verde bem suave */
+    --texto-escuro: #212529;      /* Cor padrão para textos escuros */
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--texto-escuro);
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   Barra de Navegação (Navbar)
+   ========================================================================== */
+.navbar {
+    padding: 15px 0;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--texto-escuro) !important;
+    position: relative;
+    margin: 0 5px;
+}
+
+.nav-link:hover {
+    color: var(--cor-primaria) !important;
+}
+
+/* ==========================================================================
+   Seção Hero (Início)
+   ========================================================================== */
+.hero-section {
+    min-height: 80vh;
+    background: linear-gradient(135deg, #ffffff 0%, var(--cor-clara) 100%);
+}
+
+.hero-img {
+    max-height: 440px;
+    width: 100%;
+    object-fit: cover;
+    border-left: 6px solid var(--cor-primaria);
+}
+
+.btn-success {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    padding: 12px 30px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   Seção de Serviços (Cards)
+   ========================================================================== */
+.card-servico {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.icone-servico {
+    font-size: 2.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-clara);
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Seção de Contato (Formulário)
+   ========================================================================== */
+.form-control {
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
