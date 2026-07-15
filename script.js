@@ -1,30 +1,49 @@
-// Aguarda o HTML ser totalmente carregado antes de rodar o script
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // Seleciona o formulário de contato
-    const formulario = document.querySelector("#contato form");
+    const formulario = document.getElementById("form-contato");
 
     if (formulario) {
         formulario.addEventListener("submit", (evento) => {
-            // Evita que a página recarregue ao enviar o formulário
             evento.preventDefault();
 
-            // Pega os dados dos campos
             const nome = document.getElementById("nome").value.trim();
             const email = document.getElementById("email").value.trim();
             const mensagem = document.getElementById("mensagem").value.trim();
 
-            // Validação simples (se os campos não estão apenas com espaços em branco)
             if (nome === "" || email === "" || mensagem === "") {
                 alert("Por favor, preencha todos os campos antes de enviar.");
                 return;
             }
 
-            // Exibe um feedback de sucesso para o usuário
-            alert(`Obrigado, ${nome}! Seus dados foram enviados. Nossa equipe entrará em contato em breve.`);
+            // Desabilitar o botão enquanto envia para evitar cliques duplos
+            const botao = formulario.querySelector("button[type='submit']");
+            botao.disabled = true;
+            botao.innerText = "Enviando...";
 
-            // Limpa o formulário após o envio bem-sucedido
-            formulario.reset();
+            // Captura os dados do formulário
+            const formData = new FormData(formulario);
+
+            // Envia para a API do Web3Forms
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            })
+            .then(async (response) => {
+                if (response.status === 200) {
+                    alert(`Obrigado, ${nome}! Seus dados foram enviados diretamente para nossa equipe.`);
+                    formulario.reset();
+                } else {
+                    alert("Ocorreu um erro ao enviar. Por favor, tente novamente.");
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Erro de conexão. Verifique sua internet.");
+            })
+            .finally(() => {
+                // Reativa o botão
+                botao.disabled = false;
+                botao.innerText = "Enviar Mensagem";
+            });
         });
     }
 });

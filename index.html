@@ -90,18 +90,21 @@
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-6">
-                    <form class="bg-white p-4 rounded shadow-sm">
+                   <form id="form-contato" class="bg-white p-4 rounded shadow-sm">
+                        <!-- Chave de acesso do Web3Forms (pegaremos no Passo 3) -->
+                        <input type="hidden" name="access_key" value="SUA_CHAVE_AQUI">
+
                         <div class="mb-3">
                             <label for="nome" class="form-label fw-semibold">Seu Nome</label>
-                            <input type="text" class="form-control" id="nome" required>
+                            <input type="text" name="nome" class="form-control" id="nome" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold">E-mail ou Telefone</label>
-                            <input type="text" class="form-control" id="email" required>
+                            <input type="text" name="contato" class="form-control" id="email" required>
                         </div>
                         <div class="mb-3">
                             <label for="mensagem" class="form-label fw-semibold">Mensagem</label>
-                            <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+                            <textarea name="mensagem" class="form-control" id="mensagem" rows="4" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-success w-100 py-2 fw-bold shadow-sm">Enviar Mensagem</button>
                     </form>
